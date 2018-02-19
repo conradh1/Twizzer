@@ -25,4 +25,16 @@ export class DataProvider {
   getTweets() {
     return  this.http.get('data/tweets.json').map(res => res.json());
   }
+
+  getTweet(id) {
+    this.http.get('data/tweets.json')
+        .map(res => {
+          return res.json().id.filter((tweet) => {
+            if (tweet.id == id ) {
+              // assign sources to array
+              return tweet;
+            }
+          })
+        });
+  }
 }

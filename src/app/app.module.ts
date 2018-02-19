@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HashTagsPage } from '../pages/hashtags/hashtags';
 import { TwizPage } from '../pages/twiz/twiz';
+import { SummaryPage } from '../pages/summary/summary';
 import { DataProvider } from '../providers/data/data';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     HashTagsPage,
-    TwizPage
+    TwizPage,
+    SummaryPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     HashTagsPage,
-    TwizPage
+    TwizPage,
+    SummaryPage
   ],
   providers: [
     StatusBar,

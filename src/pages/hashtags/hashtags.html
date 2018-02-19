@@ -16,7 +16,7 @@
 <ion-content padding>
   <h2>Pick a HashTag !</h2>
   <ion-list *ngFor="let hashtag of hashtags">
-    <b>{{ hashtag.category }}:</b><button ion-button (click)="gotoTwizPage(hashtag,1)">
+    <b>{{ hashtag.category }}:</b><button ion-button (click)="gotoTwizPage(hashtag,1,[])">
     {{ hashtag.name }}
     </button>
     {{ hashtag.description }}

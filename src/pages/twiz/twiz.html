@@ -18,6 +18,10 @@
   <p> HashTag: {{ hashtag.name }}</p>
   <ion-grid class="wrapper" *ngFor="let tweet of tweets">
   <p>Tweet: {{ tweet.tweet }}</p>
-  <button ion-button (click)="gotoNextTweet()">Next</button>
+</ion-grid>
+<button ion-button (click)="gotoNextTweet(0)">Boo</button>
+<button ion-button (click)="gotoNextTweet(1)">YAY</button>
+<ion-grid class="wrapper" *ngFor="let vote of votes">
+<p> {{ vote }}</p>
 </ion-grid>
 </ion-content>
