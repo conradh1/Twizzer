@@ -44,7 +44,15 @@ export class TwizPage {
     console.log('ionViewDidLoad TwizPage');
     this.hashtag = this.navParams.get('hashtag');
     this.tweet_id = this.navParams.get('tweet_id');
+
     this.getTweets(this.tweet_id);
+  }
+
+  gotoNextTweet() {    
+    this.navCtrl.setRoot(this.navCtrl.getActive().component,{
+      hashtag: this.hashtag,
+      tweet_id: this.tweet_id+1
+    });
   }
 
 
