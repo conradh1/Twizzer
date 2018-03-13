@@ -21,19 +21,25 @@ export class TwizPage {
   hashtag = [];
   public votes = [];
   public tweets: any;  // contains question object
-  private tweet_id;
+  private id;
   public summaryPage = SummaryPage;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private dataProvider: DataProvider) {
   }
-  getTweets(tweet_id){
+
+  getTweets(){
+    this.dataProvider.getTweets().subscribe((data)=>{
+          this.tweets = data;
+    });
+  }
+  getTweet(id){
     this.dataProvider.getTweets().subscribe((data)=>{
           // filter by current tweet
           //console.log("debug getTweets"+tweet_id);
           this.tweets = data.filter((tweet) => {
-            if (tweet.id == tweet_id ) {
+            if (tweet.id == id ) {
               // assign sources to array
               return true;
             }
@@ -42,17 +48,19 @@ export class TwizPage {
       console.log(error);// Error getting the data
     });
   }
-  getTweet(id){
-    this.tweets = this.dataProvider.getTweet(id);
-  }
+  /*getTweet(id){
+    this.dataProvider.getTweet(id).subscribe((data)=>{
+          this.tweets = data;
+    });
+  }*/
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TwizPage');
     this.hashtag = this.navParams.get('hashtag');
     this.tweet_id = this.navParams.get('tweet_id');
     this.votes = this.navParams.get('votes');
-    //this.getTweet(this.tweet_id);
-    this.getTweets(this.tweet_id);
+    this.getTweet(this.tweet_id);
+    //this.getTweets(this.tweet_id);
   }
 
   gotoNextTweet(vote) {
@@ -61,6 +69,7 @@ export class TwizPage {
 
     this.tweet_id++;
 
+    // After five questions, go to the next page
     if ( this.tweet_id < 6 ) {
       this.navCtrl.setRoot(this.navCtrl.getActive().component,{
         hashtag: this.hashtag,
