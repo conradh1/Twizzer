@@ -57,9 +57,9 @@ export class TwizPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TwizPage');
     this.hashtag = this.navParams.get('hashtag');
-    this.tweet_id = this.navParams.get('tweet_id');
+    this.id = this.navParams.get('id');
     this.votes = this.navParams.get('votes');
-    this.getTweet(this.tweet_id);
+    this.getTweet(this.id);
     //this.getTweets(this.tweet_id);
   }
 
@@ -67,13 +67,13 @@ export class TwizPage {
     this.votes.push(vote);
     console.log(this.votes);
 
-    this.tweet_id++;
+    this.id++;
 
     // After five questions, go to the next page
-    if ( this.tweet_id < 6 ) {
+    if ( this.id < 6 ) {
       this.navCtrl.setRoot(this.navCtrl.getActive().component,{
         hashtag: this.hashtag,
-        tweet_id: this.tweet_id,
+        id: this.id,
         votes: this.votes
         });
     }

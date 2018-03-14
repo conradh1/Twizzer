@@ -15,8 +15,7 @@
 
 <ion-content padding>
   Summary
-  <ion-grid class="wrapper" *ngFor="let vote of votes">
-  <p> {{ vote }}</p>
+  <ion-grid class="wrapper" *ngFor="let vote of votes; index as i">
+  <p>  {{ votes[i]}}</p>
   </ion-grid>
-  {{ votes[0] }}
 </ion-content>
