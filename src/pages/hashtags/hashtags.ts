@@ -36,11 +36,10 @@ export class HashTagsPage {
     });
   }
 
-  public gotoTwizPage(hashtag, id, votes){
+  public gotoTwizPage(hashtag, id){
     this.navCtrl.push(this.twizPage,{
       hashtag: hashtag,
-      id: id,
-      votes: votes
+      id: id
     });
   }
 

@@ -16,9 +16,32 @@
 <ion-content padding>
   <h3>Tweet ID: {{ id }}</h3>
   <p> HashTag: {{ hashtag.name }}</p>
-  <ion-grid class="wrapper" *ngFor="let tweet of tweets">
+  <div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutright)="swipeTweet(true)" (throwoutleft)="swipeTweet(false)" id="card-stack">
+    <ion-card #mycards1 swing-card *ngFor="let tweet of tweets">
+      <ion-card-content >
+         {{ tweet.tweet }}
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button clear small icon-left color="primary" (click)="swipeTweet(false)">
+            <ion-icon name="thumbs-down"></ion-icon>
+            No
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small icon-left color="primary" (click)="swipeTweet(true)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            Yes
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <p style="text-align: center; width: 100%;">{{ vote_response }}</p>
+  <!--<ion-grid class="wrapper" *ngFor="let tweet of tweets">
   <p>Tweet: {{ tweet.tweet }}</p>
 </ion-grid>
 <button ion-button (click)="gotoNextTweet(0)">Boo</button>
-<button ion-button (click)="gotoNextTweet(1)">YAY</button>
+<button ion-button (click)="gotoNextTweet(1)">YAY</button>-->
 </ion-content>
