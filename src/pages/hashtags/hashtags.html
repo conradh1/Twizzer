@@ -14,12 +14,13 @@
 
 
 <ion-content padding>
-  <h2>Pick a HashTag !</h2>
+  <h2>Pick some HashTags!</h2>
   <ion-list *ngFor="let hashtag of hashtags">
-    <b>{{ hashtag.category }}:</b><button ion-button (click)="gotoTwizPage(hashtag,1,[])">
-    {{ hashtag.name }}
-    </button>
-    {{ hashtag.description }}
-
+    <b>{{ hashtag.category }}:</b>
+    <ion-item>
+        <ion-checkbox [(ngModel)]="hashtag.checked" (click)="clickedHashTag(hashtag.name,hashtag.checked)"></ion-checkbox>
+        <ion-label> <b>{{ hashtag.name }}</b> - {{ hashtag.description }}</ion-label>
+    </ion-item>
   </ion-list>
+ <button ion-button (click)="gotoTwizPage(selected_hashtags,1)">Start Quiz! </button>
 </ion-content>

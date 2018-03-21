@@ -17,7 +17,9 @@ import { TwizPage } from '../twiz/twiz';
 export class HashTagsPage {
 
   hashtags = [];
+  selectedHashtags = [];
   public twizPage = TwizPage;
+  checkboxValue: boolean = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -30,11 +32,12 @@ export class HashTagsPage {
     console.log('ionViewDidLoad HashTagsPage');
   }
 
-  getHashTags(){
+  public getHashTags(){
     this.dataProvider.getHashTags().subscribe((data)=>{
           this.hashtags = data;
     });
   }
+
 
   public gotoTwizPage(hashtag, id){
     this.navCtrl.push(this.twizPage,{
@@ -43,4 +46,16 @@ export class HashTagsPage {
     });
   }
 
+  public clickedHashTag(name, checked) {
+      console.log('debug clicked'+name+' '+checked);
+      this.selectedHashtags
+      const index: number = this.selectedHashtags.indexOf(name);
+      if(checked === true && index == -1) {
+        this.selectedHashtags.push(name);
+      }
+      else {
+        this.selectedHashtags.splice(index, 1);
+      }
+      console.log('debug 2: '+this.selectedHashtags);
+  }
 }
