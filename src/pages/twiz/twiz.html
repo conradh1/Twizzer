@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <h3>Tweet ID: {{ id }}</h3>
-  <p> HashTag: {{ hashtag.name }}</p>
+  <p> <!-- HashTag: {{ hashtag.name }} --></p>
   <div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutright)="swipeTweet(true)" (throwoutleft)="swipeTweet(false)" id="card-stack">
     <ion-card #mycards1 swing-card *ngFor="let tweet of tweets">
       <ion-card-content >

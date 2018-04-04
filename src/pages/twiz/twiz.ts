@@ -5,9 +5,6 @@ import { Http } from '@angular/http';
 import { SummaryPage } from '../summary/summary';
 import {
   StackConfig,
-  Stack,
-  Card,
-  ThrowEvent,
   DragEvent,
   SwingStackComponent,
   SwingCardComponent} from 'angular2-swing';
@@ -31,7 +28,7 @@ export class TwizPage {
 
   cards: Array<any>;
   stackConfig: StackConfig;
-  hashtag = [];
+  hashtags = [];
   public vote_response = '';
   public votes = [];
   public tweets: any;  // contains question object
@@ -81,8 +78,9 @@ export class TwizPage {
   }
   // Connected through HTML
 swipeTweet(like: boolean) {
-  let tweet = this.cards.pop();
-    this.votes.push(like);
+  this.cards.pop();
+  this.votes.push(like);
+
   console.log('voteUp'+this.id+' votes'+this.votes);
 
   if ( this.id == 5 ) {
@@ -140,8 +138,9 @@ decimalToHex(d, padding) {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TwizPage');
-    this.hashtag = this.navParams.get('hashtag');
+    this.hashtags = this.navParams.get('hashtags');
     this.id = this.navParams.get('id');
+    console.log("got hashtags"+this.hashtags)
   }
 
   gotoNextTweet(vote) {

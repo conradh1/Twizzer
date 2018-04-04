@@ -39,9 +39,9 @@ export class HashTagsPage {
   }
 
 
-  public gotoTwizPage(hashtag, id){
+  public gotoTwizPage(id){
     this.navCtrl.push(this.twizPage,{
-      hashtag: hashtag,
+      hashtags: this.selectedHashtags,
       id: id
     });
   }
